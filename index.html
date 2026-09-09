@@ -395,6 +395,7 @@ input,select{
 <header>
   <nav>
     <div class="logo">BONUX<span>STORE</span></div>
+
     <button class="cart" onclick="openCart()">
       🛒 Carrito <span id="count" class="badge">0</span>
     </button>
@@ -402,14 +403,20 @@ input,select{
 </header>
 
 <section class="hero">
-  <h1>Diamantes <span>Free Fire</span> y recargas económicas</h1>
+
+  <h1>
+    Diamantes <span>Free Fire</span> y recargas económicas
+  </h1>
 
   <p>
     Bonuxstore ofrece recargas de diamantes para Free Fire,
     pases y productos digitales. Consulta precios y realiza tu pedido.
   </p>
 
-  <a class="cta" href="#productos">Ver productos</a>
+  <a class="cta" href="#productos">
+    Ver productos
+  </a>
+
 </section>
 
 <main>
@@ -421,6 +428,7 @@ input,select{
   <div class="grid" id="products"></div>
 
   <div class="info">
+
     <h2>💳 Métodos de pago</h2>
 
     <p>
@@ -428,18 +436,30 @@ input,select{
     </p>
 
     <div class="pay">
-      <span>Nequi: 3135015498</span>
+
+      <span>
+        Nequi: 3135015498
+      </span>
+
       <span>
         Bancolombia:
-        <span style="color:#ff4f7b">FUERA DE SERVICIO</span>
+        <span style="color:#ff4f7b">
+          FUERA DE SERVICIO
+        </span>
       </span>
-      <span>Binance: 865179286</span>
+
+      <span>
+        Binance: 865179286
+      </span>
+
     </div>
 
     <p style="color:#a9abc0;font-size:13px">
-      Después de pagar, envía el comprobante por WhatsApp junto con tu pedido.
-      Nunca compartas contraseñas ni códigos de verificación.
+      Después de pagar, selecciona el comprobante y pulsa
+      "Enviar pedido y comprobante". El comprobante se compartirá
+      como imagen junto con el mensaje cuando el dispositivo lo permita.
     </p>
+
   </div>
 
   <p style="color:#a9abc0;font-size:13px">
@@ -447,6 +467,7 @@ input,select{
   </p>
 
   <div class="admin">
+
     <h2>🤖 Verificación de pagos</h2>
 
     <p style="color:#a9abc0">
@@ -456,19 +477,24 @@ input,select{
     </p>
 
     <div id="verificationResult" class="verify-box">
+
       <strong>Estado:</strong>
 
       <div class="verify-status pending">
         🟡 Esperando comprobante
       </div>
+
     </div>
+
   </div>
 
 </main>
 
 <section class="info" style="max-width:1050px;margin:0 auto 25px">
 
-  <h2>Recargas de diamantes para Free Fire</h2>
+  <h2>
+    Recargas de diamantes para Free Fire
+  </h2>
 
   <p>
     Encuentra recargas de diamantes para Free Fire, paquetes digitales
@@ -489,134 +515,258 @@ input,select{
   © 2026 Bonuxstore · Tienda gamer
 </footer>
 
-<div class="modal" id="modal" onclick="if(event.target===this)closeCart()">
+<div
+  class="modal"
+  id="modal"
+  onclick="if(event.target===this)closeCart()"
+>
 
   <div class="sheet">
 
-    <button class="close" onclick="closeCart()">✕</button>
+    <button class="close" onclick="closeCart()">
+      ✕
+    </button>
 
     <h2>🛒 Tu carrito</h2>
 
     <div id="cartItems"></div>
 
-    <h3 id="total">Total: $0 COP</h3>
+    <h3 id="total">
+      Total: $0 COP
+    </h3>
 
-    <label>Tu nombre</label>
-    <input id="name" placeholder="Ej. Juan">
+    <label>
+      Tu nombre
+    </label>
 
-    <label>Tu ID de jugador (UID)</label>
-    <input id="uid" placeholder="Solo tu UID, nunca tu contraseña">
+    <input
+      id="name"
+      placeholder="Ej. Juan"
+    >
 
-    <label>Método de pago</label>
+    <label>
+      Tu ID de jugador (UID)
+    </label>
+
+    <input
+      id="uid"
+      placeholder="Solo tu UID, nunca tu contraseña"
+    >
+
+    <label>
+      Método de pago
+    </label>
 
     <select id="payment">
-      <option>Nequi</option>
-      <option>Bancolombia</option>
-      <option>Binance</option>
+
+      <option>
+        Nequi
+      </option>
+
+      <option>
+        Bancolombia
+      </option>
+
+      <option>
+        Binance
+      </option>
+
     </select>
 
-    <label>Comprobante de pago</label>
+    <label>
+      Comprobante de pago
+    </label>
 
     <input
       id="receipt"
       type="file"
-      accept="image/*,.pdf"
+      accept="image/jpeg,image/png,image/webp,image/gif"
       onchange="precheckReceipt()"
     >
 
     <p style="color:#a9abc0;font-size:12px">
-      Selecciona una imagen o PDF del comprobante.
+      Selecciona una imagen del comprobante.
+      La imagen se adjuntará al compartir el pedido.
     </p>
 
-    <div id="receiptStatus" class="verify-status pending">
+    <div
+      id="receiptStatus"
+      class="verify-status pending"
+    >
       🟡 Esperando comprobante
     </div>
 
-    <button class="whatsapp" onclick="sendOrder()">
+    <button
+      class="whatsapp"
+      onclick="sendOrder()"
+    >
       📲 Enviar pedido y comprobante
     </button>
 
   </div>
+
 </div>
 
 <script>
+
 const products = [
-  {name:"110 Diamantes",price:3500,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"310 Diamantes",price:10000,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"572 Diamantes",price:17000,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"1060 Diamantes",price:32000,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"2180 Diamantes",price:56000,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"6180 Diamantes",price:140000,icon:"💎",desc:"Recarga digital de Free Fire"},
-  {name:"Pase",price:9000,icon:"🎟️",desc:"Producto digital"},
-  {name:"Caja",price:5000,icon:"📦",desc:"Producto digital"}
+
+  {
+    name:"110 Diamantes",
+    price:3500,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"310 Diamantes",
+    price:10000,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"572 Diamantes",
+    price:17000,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"1060 Diamantes",
+    price:32000,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"2180 Diamantes",
+    price:56000,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"6180 Diamantes",
+    price:140000,
+    icon:"💎",
+    desc:"Recarga digital de Free Fire"
+  },
+
+  {
+    name:"Pase",
+    price:9000,
+    icon:"🎟️",
+    desc:"Producto digital"
+  },
+
+  {
+    name:"Caja",
+    price:5000,
+    icon:"📦",
+    desc:"Producto digital"
+  }
+
 ];
 
 let cart = [];
 
-const money = n => n.toLocaleString("es-CO");
+const money = n =>
+  n.toLocaleString("es-CO");
+
 
 function renderProducts(){
 
-  document.getElementById("products").innerHTML = products.map((p,i) => `
-    <div class="product">
+  document.getElementById("products").innerHTML =
+    products.map((p,i) => `
 
-      <div class="icon">${p.icon}</div>
+      <div class="product">
 
-      <h3>${p.name}</h3>
+        <div class="icon">
+          ${p.icon}
+        </div>
 
-      <p>${p.desc}</p>
+        <h3>
+          ${p.name}
+        </h3>
 
-      <div class="price">
-        $${money(p.price)} COP
+        <p>
+          ${p.desc}
+        </p>
+
+        <div class="price">
+          $${money(p.price)} COP
+        </div>
+
+        <button
+          class="add"
+          onclick="add(${i})"
+        >
+          Añadir al carrito
+        </button>
+
       </div>
 
-      <button class="add" onclick="add(${i})">
-        Añadir al carrito
-      </button>
+    `).join("");
 
-    </div>
-  `).join("");
 }
+
 
 function add(i){
 
-  const existing = cart.find(item => item.product === products[i]);
+  const existing =
+    cart.find(
+      item => item.product === products[i]
+    );
 
   if(existing){
+
     existing.qty++;
+
   }else{
+
     cart.push({
       product:products[i],
       qty:1
     });
+
   }
 
   update();
 
   alert("Producto añadido al carrito");
+
 }
+
 
 function changeQty(i,delta){
 
   cart[i].qty += delta;
 
   if(cart[i].qty <= 0){
+
     cart.splice(i,1);
+
   }
 
   update();
+
 }
+
 
 function update(){
 
-  const count = cart.reduce(
-    (s,item) => s + item.qty,
-    0
-  );
+  const count =
+    cart.reduce(
+      (s,item) => s + item.qty,
+      0
+    );
 
-  document.getElementById("count").textContent = count;
+  document.getElementById("count").textContent =
+    count;
 
-  const box = document.getElementById("cartItems");
+  const box =
+    document.getElementById("cartItems");
 
   if(!cart.length){
 
@@ -629,73 +779,84 @@ function update(){
     return;
   }
 
-  box.innerHTML = cart.map((item,i) => {
+  box.innerHTML =
+    cart.map((item,i) => {
 
-    const p = item.product;
+      const p = item.product;
 
-    return `
-      <div class="row">
+      return `
 
-        <div>
+        <div class="row">
 
-          <span>
-            ${p.icon} ${p.name}
-          </span>
+          <div>
 
-          <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+            <span>
+              ${p.icon} ${p.name}
+            </span>
+
+            <div
+              style="margin-top:8px;display:flex;align-items:center;gap:8px"
+            >
+
+              <button
+                class="close"
+                style="padding:5px 9px"
+                onclick="changeQty(${i},-1)"
+              >
+                −
+              </button>
+
+              <strong>
+                ${item.qty}
+              </strong>
+
+              <button
+                class="close"
+                style="padding:5px 9px"
+                onclick="changeQty(${i},1)"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <div style="text-align:right">
+
+            <strong>
+              $${money(p.price * item.qty)}
+            </strong>
+
+            <br>
 
             <button
-              class="close"
-              style="padding:5px 9px"
-              onclick="changeQty(${i},-1)"
+              class="remove"
+              onclick="changeQty(${i},-item.qty)"
             >
-              −
-            </button>
-
-            <strong>${item.qty}</strong>
-
-            <button
-              class="close"
-              style="padding:5px 9px"
-              onclick="changeQty(${i},1)"
-            >
-              +
+              Eliminar
             </button>
 
           </div>
 
         </div>
 
-        <div style="text-align:right">
+      `;
 
-          <strong>
-            $${money(p.price * item.qty)}
-          </strong>
+    }).join("");
 
-          <br>
-
-          <button
-            class="remove"
-            onclick="changeQty(${i},-item.qty)"
-          >
-            Eliminar
-          </button>
-
-        </div>
-
-      </div>
-    `;
-
-  }).join("");
-
-  const total = cart.reduce(
-    (s,item) => s + item.product.price * item.qty,
-    0
-  );
+  const total =
+    cart.reduce(
+      (s,item) =>
+        s + item.product.price * item.qty,
+      0
+    );
 
   document.getElementById("total").textContent =
     "Total: $" + money(total) + " COP";
+
 }
+
 
 function openCart(){
 
@@ -704,14 +865,18 @@ function openCart(){
   document
     .getElementById("modal")
     .classList.add("show");
+
 }
+
 
 function closeCart(){
 
   document
     .getElementById("modal")
     .classList.remove("show");
+
 }
+
 
 function precheckReceipt(){
 
@@ -724,6 +889,7 @@ function precheckReceipt(){
   const result =
     document.getElementById("verificationResult");
 
+
   if(!file){
 
     status.className =
@@ -735,12 +901,16 @@ function precheckReceipt(){
     return;
   }
 
+
   const allowed = [
+
     "image/jpeg",
     "image/png",
     "image/webp",
-    "application/pdf"
+    "image/gif"
+
   ];
+
 
   if(!allowed.includes(file.type)){
 
@@ -748,10 +918,11 @@ function precheckReceipt(){
       "verify-status review";
 
     status.textContent =
-      "🔴 Formato no compatible";
+      "🔴 Debes seleccionar una imagen";
 
     return;
   }
+
 
   if(file.size > 8 * 1024 * 1024){
 
@@ -764,24 +935,33 @@ function precheckReceipt(){
     return;
   }
 
+
   status.className =
     "verify-status pending";
 
   status.textContent =
-    "🟡 Comprobante recibido: se requiere verificación del pago";
+    "🟡 Comprobante listo para compartir";
+
 
   result.innerHTML = `
-    <strong>Estado:</strong>
+
+    <strong>
+      Estado:
+    </strong>
 
     <div class="verify-status pending">
-      🟡 Pre-verificación completada.
-      El archivo parece válido, pero esto NO confirma
-      que el dinero haya llegado.
+
+      🟡 Comprobante seleccionado.
+      La imagen se adjuntará al compartir el pedido.
+
     </div>
+
   `;
+
 }
 
-function sendOrder(){
+
+async function sendOrder(){
 
   if(!cart.length){
 
@@ -790,33 +970,82 @@ function sendOrder(){
     return;
   }
 
+
   const name =
-    document.getElementById("name").value.trim()
+    document
+      .getElementById("name")
+      .value
+      .trim()
     || "No indicado";
 
+
   const uid =
-    document.getElementById("uid").value.trim()
+    document
+      .getElementById("uid")
+      .value
+      .trim()
     || "No indicado";
+
 
   const payment =
     document.getElementById("payment").value;
 
+
+  const receiptInput =
+    document.getElementById("receipt");
+
+
   const receiptFile =
-    document.getElementById("receipt").files[0];
+    receiptInput.files[0];
 
-  const receiptName =
-    receiptFile
-      ? receiptFile.name
-      : "No adjuntado";
 
-  const items = cart.map(item =>
-    `• ${item.product.name} x${item.qty} — $${money(item.product.price * item.qty)} COP`
-  ).join("\n");
+  if(!receiptFile){
 
-  const total = cart.reduce(
-    (s,item) => s + item.product.price * item.qty,
-    0
-  );
+    alert(
+      "Selecciona primero el comprobante de pago."
+    );
+
+    return;
+  }
+
+
+  const allowed = [
+
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif"
+
+  ];
+
+
+  if(!allowed.includes(receiptFile.type)){
+
+    alert(
+      "El comprobante debe ser una imagen."
+    );
+
+    return;
+  }
+
+
+  const items =
+    cart.map(item =>
+
+      `• ${item.product.name} x${item.qty} — $${money(
+        item.product.price * item.qty
+      )} COP`
+
+    ).join("\n");
+
+
+  const total =
+    cart.reduce(
+      (s,item) =>
+        s + item.product.price * item.qty,
+      0
+    );
+
 
   const text =
 `Hola Bonuxstore 👋
@@ -830,22 +1059,117 @@ Total: $${money(total)} COP
 Nombre: ${name}
 UID: ${uid}
 Método de pago: ${payment}
-Comprobante: ${receiptName}
 
-Estado: pendiente de verificación bancaria
+📎 Comprobante de pago adjunto.
 
-Adjunta el comprobante de pago en este chat.`;
+Estado: pendiente de verificación bancaria`;
+
+
+  /*
+    COMPARTIR TEXTO + IMAGEN
+
+    En Android/Chrome y otros navegadores compatibles,
+    navigator.share permite compartir el texto y el archivo
+    de imagen juntos.
+
+    El usuario deberá seleccionar WhatsApp en el menú
+    de compartir.
+  */
+
+  if(
+    navigator.share &&
+    navigator.canShare
+  ){
+
+    try{
+
+      const shareFile =
+        new File(
+          [receiptFile],
+          receiptFile.name,
+          {
+            type:receiptFile.type
+          }
+        );
+
+
+      const shareData = {
+
+        title:"Pedido Bonuxstore",
+
+        text:text,
+
+        files:[shareFile]
+
+      };
+
+
+      if(
+        navigator.canShare({
+          files:[shareFile]
+        })
+      ){
+
+        await navigator.share(
+          shareData
+        );
+
+        return;
+
+      }
+
+    }catch(error){
+
+      /*
+        Si el usuario cancela el menú de compartir,
+        no hacemos nada.
+      */
+
+      if(error.name === "AbortError"){
+
+        return;
+
+      }
+
+    }
+
+  }
+
+
+  /*
+    COMPATIBILIDAD:
+
+    Si el navegador no permite compartir archivos,
+    abrimos WhatsApp con el texto.
+
+    En este caso el usuario deberá adjuntar
+    manualmente la imagen.
+  */
+
+  const whatsappUrl =
+    "https://wa.me/573008919486?text="
+    + encodeURIComponent(text);
+
 
   window.open(
-    "https://wa.me/573008919486?text="
-    + encodeURIComponent(text),
+    whatsappUrl,
     "_blank"
   );
+
+
+  alert(
+    "Tu navegador no permite adjuntar la imagen automáticamente. " +
+    "WhatsApp se abrió con el mensaje; adjunta el comprobante manualmente."
+  );
+
 }
 
+
 renderProducts();
+
 update();
+
 </script>
 
 </body>
-</html>
+  </html>
